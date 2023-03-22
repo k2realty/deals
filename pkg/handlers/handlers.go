@@ -15,12 +15,14 @@ type Repository struct {
 	App *config.AppConfig
 }
 
+// NewRepo our app config variable, and stores it in a repo.
 func NewRepo(a *config.AppConfig) *Repository {
 	return &Repository{
 		App: a,
 	}
 }
 
+// NewHandlers assigns our Local Repo var to the incoming pointer to r.
 func NewHandlers(r *Repository) {
 	Repo = r
 }

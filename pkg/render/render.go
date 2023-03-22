@@ -25,8 +25,10 @@ func addDefaultData(td *models.TemplateData) *models.TemplateData {
 	return td
 }
 
+// RenderTemplate reads from disk, parses, and delivers to browser.
 func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
 	var tc map[string]*template.Template
+	// here, we are checking to see if we are in production and if we want to use cache or not.
 	if app.UseCache {
 		// get the template cache from the appConfig
 		tc = app.TemplateCache
@@ -53,6 +55,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 	}
 }
 
+// CreateTemplateCache ranges over the templates, and returns the cache.
 func CreateTemplateCache() (map[string]*template.Template, error) {
 	myCache := map[string]*template.Template{}
 

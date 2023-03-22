@@ -36,8 +36,8 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{})
 }
 
-// About is the about page handler
-func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
+// About is the contact page handler
+func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
 	// perform some logic
 	stringMap := make(map[string]string)
 	stringMap["test"] = "The lucky number 11"
@@ -45,7 +45,14 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	remoteIP := m.App.Session.GetString(r.Context(), "remoteIP")
 	stringMap["remoteIP"] = remoteIP
 
-	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
+	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{
 		StringMap: stringMap,
 	})
+}
+
+// Home is the home page handler
+func (m *Repository) Login(w http.ResponseWriter, r *http.Request) {
+	// perform some logic
+
+	render.RenderTemplate(w, "login.page.tmpl", &models.TemplateData{})
 }

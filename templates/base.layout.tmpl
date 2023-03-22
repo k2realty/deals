@@ -7,18 +7,19 @@
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<script src="https://cdn.tailwindcss.com"></script>
-			<title>First Web App</title>
-
-			{{block "css" .}}
-			{{end}}
-
+			<title>K2 Deals</title>
 		</head>
 		<body>
-
+			<nav class="shadow bg-zinc-200 ">
+				<div class="m-auto max-w-[1200px]">
+					<ul class="flex py-2 px-4">
+					<li class="pr-4"><a href="/">Home</a></li>
+					<li class="pr-4"><a href="/contact">Contact</a></li>
+					<li class="pr-4"><a href="/login">Login</a></li>
+					</ul>
+				</div>
+			</nav>
 			{{block "content" .}}
-			{{end}}
-
-			{{block "js" .}}
 			{{end}}
 
 		</body>

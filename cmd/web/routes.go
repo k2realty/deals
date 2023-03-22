@@ -14,14 +14,17 @@ func routes(app *config.AppConfig) http.Handler {
 
 	mux := chi.NewRouter()
 
+	// define our middleware
 	mux.Use(middleware.Recoverer)
 	mux.Use(NoSurf)
 	mux.Use(SessionLoad)
 
+	//define our page routes
 	mux.Get("/", handlers.Repo.Home)
-	mux.Get("/about", handlers.Repo.About)
+	mux.Get("/contact", handlers.Repo.Contact)
+	mux.Get("/login", handlers.Repo.Login)
 
-	// this code provides our templates with the static content inside the static folder.
+	// this code provides our templates with the content inside the static folder.
 	fileServer := http.FileServer(http.Dir("./static/"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
 

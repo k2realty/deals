@@ -1,0 +1,15 @@
+{{template "base" .}}
+	{{define "content"}}
+		<div class="container mx-auto max-w-[1200px] pt-6">
+			<h1 class="text-5xl">This is the about page!</h1>
+			<p>This is from  handlers {{index .StringMap "test"}}</p>
+			<a class="py-2 px-4 bg-zinc-300" href="/">Home</a>
+			<p>
+				{{if ne (index .StringMap "remoteIP") ""}}
+					Your remove IP address is {{index .StringMap "remoteIP"}}
+				{{else}}
+					I dont know your ip address yet. Visit the home page to obtain it.
+				{{end}}
+			</p>
+		</div>
+	{{end}}

@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/k2realty/deals/pkg/config"
@@ -32,20 +33,24 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	remoteIP := r.RemoteAddr
 	m.App.Session.Put(r.Context(), "remoteIP", remoteIP)
 
-	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(w, r, "home.page.tmpl", &models.TemplateData{})
 }
 
 // About is the Deals page handler
 func (m *Repository) Deals(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "deals.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(w, r, "deals.page.tmpl", &models.TemplateData{})
 }
 
 // About is the PostContact page handler
 func (m *Repository) PostDeals(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Posted to contact"))
+	// when you pull data out of a form request, it's always a string.
+	clientName := r.Form.Get("clientName")
+	comp := r.Form.Get("comp")
+
+	w.Write([]byte(fmt.Sprintf("The client: %s, has added $%v to your pipeline!", clientName, comp)))
 }
 
 // Home is the home page handler
 func (m *Repository) Login(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "login.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(w, r, "login.page.tmpl", &models.TemplateData{})
 }

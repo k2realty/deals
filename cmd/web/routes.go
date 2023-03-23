@@ -16,7 +16,7 @@ func routes(app *config.AppConfig) http.Handler {
 
 	// define our middleware
 	mux.Use(middleware.Recoverer)
-	//mux.Use(NoSurf)
+	mux.Use(NoSurf)
 	mux.Use(SessionLoad)
 
 	//define our page routes

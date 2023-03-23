@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"path/filepath"
 
+	"github.com/justinas/nosurf"
 	"github.com/k2realty/deals/pkg/config"
 	"github.com/k2realty/deals/pkg/models"
 )
@@ -20,13 +21,14 @@ func NewTemplates(a *config.AppConfig) {
 
 // addDefaultData populated the default data struct to make
 // page data available across entire app.
-func addDefaultData(td *models.TemplateData) *models.TemplateData {
+func addDefaultData(td *models.TemplateData, r *http.Request) *models.TemplateData {
 	// add default page data here
+	td.CSRFToken = nosurf.Token(r)
 	return td
 }
 
 // RenderTemplate reads from disk, parses, and delivers to browser.
-func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
+func RenderTemplate(w http.ResponseWriter, r *http.Request, tmpl string, td *models.TemplateData) {
 	var tc map[string]*template.Template
 	// here, we are checking to see if we are in production and if we want to use cache or not.
 	if app.UseCache {
@@ -44,7 +46,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 
 	buf := new(bytes.Buffer)
 
-	td = addDefaultData(td)
+	td = addDefaultData(td, r)
 
 	_ = t.Execute(buf, td)
 

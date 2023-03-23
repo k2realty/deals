@@ -4,6 +4,8 @@
 			<h1 class="text-3xl pb-8">New Deal</h1>
 			<form action="/deals" method="post">
 
+				<input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+
 				<label for="clientName">Client Name</label>
 				<input type="text" name="clientName" class="block py-2 px-4 rounded border w-full mb-5">
 
@@ -15,4 +17,4 @@
 			</form>
 		</div>
 		
-	{{end}}
+{{end}}

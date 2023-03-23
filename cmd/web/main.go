@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/alexedwards/scs/v2"
-	"github.com/k2realty/deals/pkg/config"
-	"github.com/k2realty/deals/pkg/handlers"
-	"github.com/k2realty/deals/pkg/render"
+	"github.com/k2realty/deals/internal/config"
+	"github.com/k2realty/deals/internal/handlers"
+	"github.com/k2realty/deals/internal/render"
 )
 
 // portNumber is where we are serving our app

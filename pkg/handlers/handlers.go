@@ -41,7 +41,7 @@ func (m *Repository) Deals(w http.ResponseWriter, r *http.Request) {
 }
 
 // About is the PostContact page handler
-func (m *Repository) PostContact(w http.ResponseWriter, r *http.Request) {
+func (m *Repository) PostDeals(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Posted to contact"))
 }
 

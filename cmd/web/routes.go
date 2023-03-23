@@ -16,13 +16,13 @@ func routes(app *config.AppConfig) http.Handler {
 
 	// define our middleware
 	mux.Use(middleware.Recoverer)
-	mux.Use(NoSurf)
+	//mux.Use(NoSurf)
 	mux.Use(SessionLoad)
 
 	//define our page routes
 	mux.Get("/", handlers.Repo.Home)
 	mux.Get("/deals", handlers.Repo.Deals)
-	mux.Post("/deals", handlers.Repo.PostContact)
+	mux.Post("/deals", handlers.Repo.PostDeals)
 	mux.Get("/login", handlers.Repo.Login)
 
 	// this code provides our templates with the content inside the static folder.

@@ -1,4 +1,18 @@
 {{template "base" .}}
 	{{define "content"}}
-		<h1 class="text-3xl">Contact</h1>
+		<div class="mx-auto max-w-[600px]">
+			<h1 class="text-3xl pb-8">Contact</h1>
+			<form action="/contact" method="post">
+
+				<label for="clientName">Client Name</label>
+				<input type="text" name="clientName" class="block py-2 px-4 rounded border w-full mb-5">
+
+				<label for="comp">Commission payable</label>
+				<input type="text" name="comp" id="comp" class="block py-2 px-4 rounded border w-full mb-5">
+
+				<input type="submit" value="Submit" class="border px-4 py-2 bg-teal-300 rounded shadow cursor-pointer">
+
+			</form>
+		</div>
+		
 	{{end}}

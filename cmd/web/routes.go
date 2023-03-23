@@ -21,7 +21,8 @@ func routes(app *config.AppConfig) http.Handler {
 
 	//define our page routes
 	mux.Get("/", handlers.Repo.Home)
-	mux.Get("/contact", handlers.Repo.Contact)
+	mux.Get("/deals", handlers.Repo.Deals)
+	mux.Post("/deals", handlers.Repo.PostContact)
 	mux.Get("/login", handlers.Repo.Login)
 
 	// this code provides our templates with the content inside the static folder.

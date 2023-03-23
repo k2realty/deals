@@ -29,30 +29,23 @@ func NewHandlers(r *Repository) {
 
 // Home is the home page handler
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	// perform some logic
 	remoteIP := r.RemoteAddr
 	m.App.Session.Put(r.Context(), "remoteIP", remoteIP)
 
 	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{})
 }
 
-// About is the contact page handler
-func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
-	// perform some logic
-	stringMap := make(map[string]string)
-	stringMap["test"] = "The lucky number 11"
+// About is the Deals page handler
+func (m *Repository) Deals(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "deals.page.tmpl", &models.TemplateData{})
+}
 
-	remoteIP := m.App.Session.GetString(r.Context(), "remoteIP")
-	stringMap["remoteIP"] = remoteIP
-
-	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{
-		StringMap: stringMap,
-	})
+// About is the PostContact page handler
+func (m *Repository) PostContact(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Posted to contact"))
 }
 
 // Home is the home page handler
 func (m *Repository) Login(w http.ResponseWriter, r *http.Request) {
-	// perform some logic
-
 	render.RenderTemplate(w, "login.page.tmpl", &models.TemplateData{})
 }
